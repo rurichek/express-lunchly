@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Customers{% endblock %}
+{% block content %}
+
+<a class="btn btn-primary" style="float: right" href="/add/">Add a Customer</a></p>
+
+<h1>Customers</h1>
+
+<!-- Search Bar -->
+<form method="get" action="/search-customer/:full_name">
+  <div class="input-group">
+    <input type="text" class="form-control" name="query" placeholder="Search for a customer... Make sure to use the full name... Ex. John Smith">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </div>
+</form>
+
+<ul style="column-count: 4">
+  {% for customer in customers %}
+  <li><a href="/{{ customer.id }}/">{{ customer.fullName }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
